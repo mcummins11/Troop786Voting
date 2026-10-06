@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Troop786.Tablet.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Navy">#2E3352</Color>
+            <Color x:Key="Red">#ED1C24</Color>
+
+            <Style x:Key="KeyButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="TextColor" Value="{StaticResource Navy}"/>
+                <Setter Property="BorderColor" Value="#C9CCDB"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="CornerRadius" Value="12"/>
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style x:Key="ActionButton" TargetType="Button" BasedOn="{StaticResource KeyButton}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Navy}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderColor" Value="{StaticResource Navy}"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

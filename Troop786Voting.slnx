@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Troop786.Core/Troop786.Core.csproj" />
+  <Project Path="Troop786.Aws/Troop786.Aws.csproj" />
+  <Project Path="Troop786.Tests/Troop786.Tests.csproj" />
+  <Project Path="Troop786.Tablet/Troop786.Tablet.csproj" />
+</Solution>

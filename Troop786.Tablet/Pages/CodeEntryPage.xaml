@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Troop786.Tablet.ViewModels"
+             x:Class="Troop786.Tablet.Pages.CodeEntryPage"
+             x:DataType="vm:CodeEntryViewModel"
+             BackgroundColor="#F4F5F9"
+             NavigationPage.HasNavigationBar="False">
+
+    <!--
+      Sized for a Galaxy Tab A7 Lite (8.7 in, 1340x800 px). Nothing here assumes a 1280x800 canvas:
+      the body scrolls if the screen is shorter than the content, and every control uses dp sizes
+      that leave room for header and footer on roughly a 600 dp tall screen.
+    -->
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="#2E3352" Padding="24,0" HeightRequest="64"
+              ColumnDefinitions="*,Auto">
+            <Label Text="TROOP 786 LEADERSHIP ELECTION" TextColor="White" FontSize="24"
+                   FontAttributes="Bold,Italic" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+            <Border Grid.Column="1" BackgroundColor="#3F4565" StrokeThickness="0" Padding="14,6"
+                    VerticalOptions="Center" StrokeShape="RoundRectangle 16">
+                <Label Text="{Binding StatusText}" TextColor="White" FontSize="14"/>
+            </Border>
+        </Grid>
+        <BoxView Grid.Row="0" HeightRequest="4" Color="#ED1C24" VerticalOptions="End"/>
+
+        <!-- Body -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10" Padding="0,16" HorizontalOptions="Center" VerticalOptions="Center">
+
+                <Label Text="ENTER YOUR 4-DIGIT CODE" TextColor="#2E3352" FontSize="30"
+                       FontAttributes="Bold,Italic" HorizontalOptions="Center"/>
+                <Label Text="Your code was given to you by a troop leader" TextColor="#6B7090"
+                       FontSize="15" HorizontalOptions="Center"/>
+
+                <!-- Code boxes -->
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Margin="0,6">
+                    <Border BackgroundColor="White" Stroke="#C9CCDB" StrokeThickness="2" WidthRequest="56" HeightRequest="68"
+                            StrokeShape="RoundRectangle 12">
+                        <Label Text="{Binding Dot1}" FontSize="36" TextColor="#2E3352" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border BackgroundColor="White" Stroke="#C9CCDB" StrokeThickness="2" WidthRequest="56" HeightRequest="68"
+                            StrokeShape="RoundRectangle 12">
+                        <Label Text="{Binding Dot2}" FontSize="36" TextColor="#2E3352" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border BackgroundColor="White" Stroke="#C9CCDB" StrokeThickness="2" WidthRequest="56" HeightRequest="68"
+                            StrokeShape="RoundRectangle 12">
+                        <Label Text="{Binding Dot3}" FontSize="36" TextColor="#2E3352" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border BackgroundColor="White" Stroke="#C9CCDB" StrokeThickness="2" WidthRequest="56" HeightRequest="68"
+                            StrokeShape="RoundRectangle 12">
+                        <Label Text="{Binding Dot4}" FontSize="36" TextColor="#2E3352" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                </HorizontalStackLayout>
+
+                <!-- Reserve the error line so the keypad never jumps -->
+                <Label Text="{Binding Error}" TextColor="#ED1C24" FontSize="15" FontAttributes="Bold"
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center" MinimumHeightRequest="22"
+                       WidthRequest="340"/>
+
+                <!-- Keypad -->
+                <Grid ColumnDefinitions="96,96,96" RowDefinitions="56,56,56,56" ColumnSpacing="10" RowSpacing="10"
+                      HorizontalOptions="Center">
+                    <Button Grid.Row="0" Grid.Column="0" Text="1" Command="{Binding PressDigitCommand}" CommandParameter="1" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="0" Grid.Column="1" Text="2" Command="{Binding PressDigitCommand}" CommandParameter="2" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="0" Grid.Column="2" Text="3" Command="{Binding PressDigitCommand}" CommandParameter="3" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="1" Grid.Column="0" Text="4" Command="{Binding PressDigitCommand}" CommandParameter="4" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="1" Grid.Column="1" Text="5" Command="{Binding PressDigitCommand}" CommandParameter="5" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="1" Grid.Column="2" Text="6" Command="{Binding PressDigitCommand}" CommandParameter="6" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="2" Grid.Column="0" Text="7" Command="{Binding PressDigitCommand}" CommandParameter="7" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="2" Grid.Column="1" Text="8" Command="{Binding PressDigitCommand}" CommandParameter="8" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="2" Grid.Column="2" Text="9" Command="{Binding PressDigitCommand}" CommandParameter="9" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="3" Grid.Column="0" Text="Clear" Command="{Binding ClearCommand}" Style="{StaticResource ActionButton}"/>
+                    <Button Grid.Row="3" Grid.Column="1" Text="0" Command="{Binding PressDigitCommand}" CommandParameter="0" Style="{StaticResource KeyButton}"/>
+                    <Button Grid.Row="3" Grid.Column="2" Text="Enter" Command="{Binding EnterCommand}" Style="{StaticResource ActionButton}"/>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Footer -->
+        <Grid Grid.Row="2" BackgroundColor="White" Padding="24,0" HeightRequest="40" ColumnDefinitions="*,Auto">
+            <Label Text="{Binding QueueText}" TextColor="#6B7090" FontSize="13" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Text="{Binding VersionText}" TextColor="#6B7090" FontSize="13" VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>
